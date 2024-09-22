@@ -92,7 +92,7 @@ To build the project from scratch, follow the steps given below, for this projec
 
 **Note:** When you see a path like _/mnt/c/Users/Disha_ don't forget to replace it with the path to your own user folder on Windows. 
 
-### Get the SDK and the examples
+### Getting the SDK and the examples
 ```
 cd /mnt/c/Users/Disha/
 mkdir pico
@@ -104,13 +104,13 @@ git submodule update --init
 cd ..
 git clone -b master https://github.com/raspberrypi/pico-examples.git
 ```
-### Get the compilers etc
+### Installing the compilers etc
 ```
 sudo apt update
 sudo apt install gcc-arm-none-eabi libnewlib-arm-none-eabi build-essential libssl-dev tk tkinter python3-tk
 ```
 ### Build CMake from source
-The version of CMake that comes with Ubuntu 18.04 LTS needs to be updated to meet the minimum requirements of the Pico build system.
+
 
 ```
 wget https://github.com/Kitware/CMake/releases/download/v3.19.4/cmake-3.19.4.tar.gz
@@ -128,7 +128,7 @@ export PICO_SDK_PATH="/mnt/c/Users/Disha/pico/pico-sdk"
 
 ### Clone the Project
 ```
-git clone -b master
+git clone -b master https://github.com/DishaMohindru1/Game_controller.git
 ```
 
 ### Build the Project
@@ -141,9 +141,11 @@ git clone -b master
    ```
 
 ## Upload the Firmware
-   Once the build is complete, you can upload the `.uf2` file to the Raspberry Pi Pico:
+   Once the build is complete, upload the `.uf2` file to the Raspberry Pi Pico:
    - Press and hold the **BOOTSEL** button while plugging the Pico into your computer.
    - Drag and drop the `.uf2` file onto the Pico’s storage device that appears.
+   - the window will close automatically, it indicates the raspberry pi is re-booted and has started working as a game controller.
+   - the LED will start blinking indicating that it is mounted on the system.
 
 ---
 
@@ -152,7 +154,7 @@ git clone -b master
 Once the firmware is uploaded, the Raspberry Pi Pico will act as a USB game controller. You can verify the functionality by:
 
 1. connecting the Pico to a computer. It should be recognised as a USB gamepad by the operating system.
-2. The host's gamepad should display the buttons pressed and the joystick movements.
+2. going to the control panel > devices and printers(open in new window) > right click on the tinyusb > game_controller settings > properties. Here, all the buttons and joystick movements can be tested.
 
 
 ---
