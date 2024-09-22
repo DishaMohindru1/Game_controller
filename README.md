@@ -84,6 +84,8 @@ The project consists of the following key files:
 - **Joystick**: Connect the X-axis and Y-axis of the joystick to the ADC pins:
   - X-axis: GPIO 26
   - Y-axis: GPIO 27
+ 
+- **LED**: Connect the LED to GPIO 18
 
 ---
 
@@ -143,7 +145,8 @@ git clone -b master https://github.com/DishaMohindru1/Game_controller.git
 ## Upload the Firmware
    Once the build is complete, upload the `.uf2` file to the Raspberry Pi Pico:
    - Press and hold the **BOOTSEL** button while plugging the Pico into your computer.
-   - Drag and drop the `.uf2` file onto the Pico’s storage device that appears.
+   - a window will appear on your system
+   - Drag and drop the `.uf2` file (created in the build file after running the make command) onto the Pico’s storage device that appears.
    - the window will close automatically, it indicates the raspberry pi is re-booted and has started working as a game controller.
    - the LED will start blinking indicating that it is mounted on the system.
 
