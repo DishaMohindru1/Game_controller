@@ -1,4 +1,4 @@
-# Pico Game Controller Project
+# Pico wh Game Controller Project
 
 This project uses the **TinyUSB** stack and the **Raspberry Pi Pico** to construct a USB gaming controller. The game controller uses the USB Human Interface Device (HID) protocol to transmit data to a host, such as a PC, and reads input from buttons and an analogue joystick.
 
@@ -6,7 +6,7 @@ This project uses the **TinyUSB** stack and the **Raspberry Pi Pico** to constru
 
 ## Introduction
 
-The **Pico Game Controller Project** demonstrates how to implement a USB HID game controller using a Raspberry Pi Pico microcontroller. It features the following:
+The **Pico wh Game Controller Project** demonstrates how to implement a USB HID game controller using a Raspberry Pi Pico microcontroller. It features the following:
 - **Analog joystick input** (read via the ADC on the Pico).
 - **Digital button inputs** (mapped to GPIO pins).
 - **USB communication** using the HID protocol to send the gamepad state to a host machine.
@@ -30,7 +30,7 @@ The project consists of the following key files:
 
 ## Hardware Components
 
-- **Raspberry Pi Pico**: The microcontroller that interfaces with the buttons and joystick.
+- **Raspberry Pi Pico wh**: The microcontroller that interfaces with the buttons and joystick.
 - **Buttons**: Digital buttons connected to GPIO pins, used for gamepad actions.
 - **Analog Joystick**: An analog joystick connected to ADC pins, used for directional input.
 - **GPIO 18**: An external LED (optional) connected to GPIO 18, used for status indication.
@@ -88,11 +88,50 @@ The project consists of the following key files:
 ---
 
 ## Compilation and Building
+To build the project from scratch, follow the steps given below, for this project I have used Windows Subsystem for Linus - Ubuntu in Windows 11:
 
-1. **Clone the Project**:
-   Clone the project and ensure that the **Pico SDK** is installed and initialized.
+**Note:** When you see a path like _/mnt/c/Users/Disha_ don't forget to replace it with the path to your own user folder on Windows. 
 
-2. **Build the Project**:
+### Get the SDK and the examples
+```
+cd /mnt/c/Users/Disha/
+mkdir pico
+cd pico
+
+git clone -b master https://github.com/raspberrypi/pico-sdk.git
+cd pico-sdk
+git submodule update --init
+cd ..
+git clone -b master https://github.com/raspberrypi/pico-examples.git
+```
+### Get the compilers etc
+```
+sudo apt update
+sudo apt install gcc-arm-none-eabi libnewlib-arm-none-eabi build-essential libssl-dev tk tkinter python3-tk
+```
+### Build CMake from source
+The version of CMake that comes with Ubuntu 18.04 LTS needs to be updated to meet the minimum requirements of the Pico build system.
+
+```
+wget https://github.com/Kitware/CMake/releases/download/v3.19.4/cmake-3.19.4.tar.gz
+tar -zxvf cmake-3.19.4.tar.gz
+cd cmake-3.19.4/
+./bootstrap
+make
+sudo make install
+```
+
+### Set the Pico-Sdk path
+```
+export PICO_SDK_PATH="/mnt/c/Users/Disha/pico/pico-sdk"
+```
+
+### Clone the Project
+```
+git clone -b master
+```
+
+### Build the Project
    Navigate to the project directory and use CMake to build the project:
    ```bash
    mkdir build
@@ -101,7 +140,7 @@ The project consists of the following key files:
    make
    ```
 
-3. **Upload the Firmware**:
+## Upload the Firmware
    Once the build is complete, you can upload the `.uf2` file to the Raspberry Pi Pico:
    - Press and hold the **BOOTSEL** button while plugging the Pico into your computer.
    - Drag and drop the `.uf2` file onto the Pico’s storage device that appears.
